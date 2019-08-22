@@ -1,0 +1,22 @@
+<div *ngIf="displayResult">
+
+    <!-- No results  -->
+    <div class="text-center" *ngIf="(totalResults === 0)" id = "noResult">
+        <strong> No results found  </strong>
+    </div>
+
+    <!-- Results -->
+    <div *ngIf="(totalResults > 0)" id = "result">
+        <div class="display-grid">
+            <ag-grid-angular #agGrid class="ag-theme-material"
+                        (gridReady)="onGridReady($event)"
+                        [gridOptions]="gridOptions"
+                        [rowData]="clients"
+                        (rowDataChanged)="onRowDataChanged($event)"
+                        (sortChanged)="onSortChanged()"
+                        >
+            </ag-grid-angular>
+            <!--<lib-client-details></lib-client-details>-->
+        </div>
+    </div>
+</div>

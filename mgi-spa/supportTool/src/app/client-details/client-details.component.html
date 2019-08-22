@@ -1,0 +1,118 @@
+<style>
+</style>
+
+<!-- Modal -->
+<div class="container-fluid">
+    <div class="modal fade" id="statusModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">{{clientDetails?.email}}</h1>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body status-edit">
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top:5px">
+                            <div class="col-md-4" style="padding-top:7px;">
+                                <span class="identity-status-label"> Identity Status:</span>
+                            </div>
+                            <div class="col-md-8">
+                                <select #statusSelect [(ngModel)]="selectedStatus" class="identity-status">
+                                    <option *ngFor="let status of statuses" [value]="status.value">{{status.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12" [ngClass]="{'show': selectedStatus!=null, 'hide': selectedStatus == null}">
+                            <div class="col-md-12">
+                                <select #reasonSelect [(ngModel)]="selectedReason" class="select-css" placeholder="change reason" style="margin:20px 0 0 0;">
+                                    <option value="unchosen" disabled selected >change reason</option>
+                                    <option *ngFor="let reason of reasons" [value]="reason.value">{{reason.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <button type="button" class="btn-primary edit-btn" 
+                                    [ngClass]="{'show': selectedStatus!=null && selectedReason!='unchosen', 'hide': selectedStatus==null || selectedReason=='unchosen'}"
+                                    (click)="updateClientStatus()">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="loading; else checkClientDetails" class="loading-bar-modal">
+            <lib-loading-bar></lib-loading-bar>
+        </div>
+        <div class="col-md-12">
+            <!-- Modal content-->
+            <ng-template #checkClientDetails>
+                <div *ngIf="clientDetails">
+                    <div class="fred ">
+                        <div class="modal-header">
+                            <h1 class="modal-title">{{clientDetails.email}}</h1>
+                            <button type="button" class="close" title="Close the details view" (click)="onCloseEvent()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Identity details</h3>
+                            <div class="container col-md-12">
+                                <ul class="list-group">
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>Email</strong></div>
+                                        <div class="col-md-8">{{clientDetails.email}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>Date created</strong></div>
+                                        <div class="col-md-8">{{clientDetails.dateCreated | date: 'dd/MM/yyyy'}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>Given name/s</strong></div>
+                                        <div class="col-md-8">{{clientDetails.givenName}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>Family name</strong></div>
+                                        <div class="col-md-8">{{clientDetails.familyName}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>Date of birth</strong></div>
+                                        <div class="col-md-8">{{clientDetails.dob | date: 'dd/MM/yyyy'}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>IP level</strong></div>
+                                        <div class="col-md-8">{{clientDetails.ipLevel}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>Account status</strong></div>
+                                        <div class="col-md-2">{{clientDetails.accountStatus}}</div>
+                                        <div class="col-md-2"><button type="button" class="btn-primary edit-btn" style="margin-top:0" (click)="showStatusEdit()" title="Edit the Client Status">Edit</button></div>
+
+                                    </li>
+                                    <li *ngIf="clientDetails.accountStatusReason!=''" class="list-group-item row">
+                                        <div class="col-md-4"><strong>Account status reason</strong></div>
+                                        <div class="col-md-8">{{clientDetails.accountStatusReason}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>T&C version</strong></div>
+                                        <div class="col-md-8">{{clientDetails.tcVersion}}</div>
+                                    </li>
+                                    <li class="list-group-item row">
+                                        <div class="col-md-4"><strong>T&C date</strong></div>
+                                        <div class="col-md-8">{{clientDetails.tcAcceptanceDate| date: 'dd/MM/yyyy'}}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" title="Close the details view" style="float:right;margin-right:30px" (click)="onCloseEvent()">Back to results</button>
+                        </div>
+                    </div>
+
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

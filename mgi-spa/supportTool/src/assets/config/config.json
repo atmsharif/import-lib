@@ -1,0 +1,8 @@
+
+{
+    "useMock": true,
+    "serviceEndpoint": {
+        "managedServiceClients": "http://msmyGovIDBlue.DTA.devtest.atohdtnet.gov.au/api/v1/ms/clients",
+        "managedServicelogin": "http://MSmyGovIDBlue.DTA.devtest.atohdtnet.gov.au/api/v1/ms/login"
+    }
+}

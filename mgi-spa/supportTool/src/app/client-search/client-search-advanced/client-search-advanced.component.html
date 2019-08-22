@@ -1,0 +1,73 @@
+<form [formGroup]="searchForm" id="advancedSearch">
+
+    <!-- Email start -->
+    <label class="question-label">Email address</label>
+    <input id = "email" style="width: 100%;"
+        [ngClass]= "checkEmailError() ? 'input-field-border': 'form-control'"
+        formControlName="email">
+
+    <div *ngIf="checkEmailError()" class="validation-text">
+        <ng-template [ngIf]="searchForm.controls['email'].hasError('maxlength')" [ngIfElse]="invalidError">
+            Maximum character limit exceeded
+        </ng-template>
+        <ng-template #invalidError>
+            <ng-template [ngIf]="searchForm.controls['email'].hasError('pattern')" >
+                This field is invalid
+            </ng-template>
+        </ng-template>
+    </div>
+    <!--  Email end -->
+
+    <!-- Given name start -->
+    <label class="question-label">Given name/s</label>
+    <input id = "givenName" style="width: 100%;"
+        [ngClass]= "checkGivenNameError() ? 'input-field-border': 'form-control'"
+        formControlName="givenName">
+
+    <div *ngIf="checkGivenNameError()" class="validation-text">
+        <ng-template [ngIf]="searchForm.controls['givenName'].hasError('maxlength')" [ngIfElse]="invalidError">
+            Maximum character limit exceeded
+        </ng-template>
+        <ng-template #invalidError>
+            <ng-template [ngIf]="searchForm.controls['givenName'].hasError('pattern')" >
+                This field is invalid
+            </ng-template>
+        </ng-template>
+    </div>
+    <!-- Given name end -->
+
+    <!-- Family name start -->
+    <label class="question-label">Family name</label>
+    <input id = "familyName" style="width: 100%;"
+        [ngClass]= "checkFamilyNameError() ? 'input-field-border': 'form-control'"
+        formControlName="familyName">
+
+    <div *ngIf="checkFamilyNameError()" class="validation-text">
+        <ng-template [ngIf]="searchForm.controls['familyName'].hasError('maxlength')" [ngIfElse]="invalidError">
+            Maximum character limit exceeded
+        </ng-template>
+        <ng-template #invalidError>
+            <ng-template [ngIf]="searchForm.controls['familyName'].hasError('pattern')" >
+                This field is invalid
+            </ng-template>
+        </ng-template>
+    </div>
+    <!-- Family name end -->
+
+    <!-- Date of birth start -->
+    <label class="question-label">Date of birth      </label>
+        <input id = "dob" style="width: 100%;"  placeholder="dd/mm/yyyy"
+        [ngClass]= "checkDobError() ? 'input-field-border': 'form-control'"
+        formControlName="dob"  >
+    <div *ngIf="checkDobError()" class="validation-text">
+        <ng-template [ngIf]="searchForm.controls['dob'].hasError('maxlength')" [ngIfElse]="invalidError">
+            Maximum character limit exceeded
+        </ng-template>
+        <ng-template #invalidError>
+            <ng-template [ngIf]="searchForm.controls['dob'].hasError('validDate') || searchForm.controls['dob'].hasError('futureDate')" >
+                This field is invalid
+            </ng-template>
+        </ng-template>
+    </div>
+    <!-- Date of birth end -->
+</form>

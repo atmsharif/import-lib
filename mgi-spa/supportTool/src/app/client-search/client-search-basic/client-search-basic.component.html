@@ -1,0 +1,26 @@
+<!-- Email -->
+<form [formGroup]="searchForm" id="basicSearch">
+    <label class="question-label">Email address</label>
+
+    <input id = "email" style="width: 100%;"
+        [ngClass]= "checkError() ? 'input-field-border': 'form-control'"
+        formControlName="email">
+
+    <div *ngIf="checkError()" class="validation-text">
+        <ng-template [ngIf]="searchForm.controls['email'].hasError('required')" [ngIfElse]="maxLengthError">
+            This field is required
+        </ng-template>
+        <ng-template #maxLengthError>
+            <ng-template [ngIf]="searchForm.controls['email'].hasError('maxlength')" [ngIfElse]="invalidError">
+                Maximum character limit exceeded
+            </ng-template>
+        </ng-template>
+        <ng-template #invalidError>
+            <ng-template [ngIf]="searchForm.controls['email'].hasError('pattern')" >
+                This field is invalid
+            </ng-template>
+        </ng-template>
+    </div>
+</form>
+<!--  Email -->
+

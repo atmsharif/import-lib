@@ -1,0 +1,58 @@
+<div *ngIf="showError">
+    <lib-error-message [systemError]="systemError"></lib-error-message>
+</div>
+
+<div [ngClass]="{'show': showClientDetails==false, 'hide': showClientDetails==true}" >
+    <!-- Basic search or advanced search -->
+    <div *ngIf="!showError" class="display-center">
+        <lib-client-search-basic *ngIf="!showAdvancedSearch"></lib-client-search-basic>
+        <lib-client-search-advanced *ngIf="showAdvancedSearch"></lib-client-search-advanced>
+
+        <div (click)="toggleAdvancedSearch()" class="hyperlink-button">{{advancedSearchText}}</div>
+
+        <button *ngIf="!loading" id="search" class="btn btn-primary" (click)="search()">Search</button>
+        <button *ngIf="displayResult" class="btn btn-default new-search-button" (click)="clearResults()">Clear</button>
+        <button *ngIf="loading" class="btn btn-processing">Search</button>
+
+    </div>
+
+    <!-- Loading bar -->
+    <div class="align-result">
+        <lib-loading-bar *ngIf="loading"></lib-loading-bar>
+    </div>
+
+    <div *ngIf="displayResult && totalResults > 1" class="display-grid display-results-per-page">
+        <div class="sel-btn sel-style">
+            <label class="question-label results-per-page-label"> Results per page </label>
+
+            <select (change)="onPageSizeChanged($event)" class="results-per-page" id="page-size">
+                <option value="10" selected="">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <lib-client-grid-results [displayResult]="displayResult" [totalResults]="totalResults" 
+                             [clients]="clients" (sortingRequest)="sortingRequest($event)" (viewClientEvent)="onViewClient($event)"
+></lib-client-grid-results>
+
+    <br />
+
+    <lib-pagination *ngIf="!showError" (newRequest)="newSearchRequest($event,false)"></lib-pagination>
+
+    <br />
+
+    <div class="display-grid display-new-search">
+       
+    </div>
+</div>
+
+<div  [ngClass]="{'show': showClientDetails ==true, 'hide': showClientDetails == false}">  
+    <lib-client-details (closeEvent)="onCloseEvent()"></lib-client-details>
+</div>
+   
+

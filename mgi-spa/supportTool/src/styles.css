@@ -1,0 +1,782 @@
+/* You can add global styles to this file, and also import other style files */
+/* Custom CSS created for myGovID Support Tool*/
+.page {
+    position: relative;
+    /*height: calc(100vh-10px );*/
+    height: calc(100% );
+}
+
+.header {
+    width: 100%;
+    height: 90px;
+    z-index: 100
+}
+
+.logo {
+    position: absolute;
+    top: 22px;
+    right: 30px;
+    z-index: 200
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0
+}
+
+.content {
+    /* Subtract the header and footer size */
+    position: relative;
+    padding: 5px;
+    height: calc(100% - 124px);
+    overflow-y: auto;
+}
+
+.display-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-bottom: 50px;
+}
+
+.loading-bar-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.status-edit {
+    min-height: 200px;
+    color: #979797;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #979797;
+}
+
+.identity-status-label {
+    color: #979797;
+    font-weight: 600;
+    font-size:17px;
+}
+/*####################################### select control custom styling #############################################################*/
+.identity-status {
+    display: block;
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: #222;
+    cursor: pointer;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 2px solid #979797;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+		for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+		
+	*/
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016.17%208.26%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23222%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3EArtboard%20104%3C%2Ftitle%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M.2.23a.66.66,0,0,1,1,0L8.07,6.76,14.93.23a.93.93,0,0,1,1,0,.59.59,0,0,1,0,.93L8.58,8.1a.89.89,0,0,1-1,0L.2,1.16A.79.79,0,0,1,0,.65.81.81,0,0,1,.2.23Z%22%2F%3E%3C%2Fsvg%3E%0D%0A'), linear-gradient(to bottom, #ffffff 0%,#ffffff 100%);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+}
+    
+    /* Hide arrow icon in IE browsers */
+    .identity-status::-ms-expand {
+        display: none;
+    }
+    /* Hover style */
+    .identity-status:hover {
+        border-color: #003B3F;
+    }
+    /* Focus style */
+    .identity-status:focus {
+        border-color: #003B3F;
+        /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+        outline: none !important;
+        color: #222;
+    }
+
+    /* Set options to normal weight */
+    .identity-status option {
+        font-weight: normal;
+        color: #222;
+        font-size:16px;
+    }
+
+    .identity-status::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #fff;
+        font-style: normal
+    }
+
+    .identity-status::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #fff;
+        font-style: normal
+    }
+
+    .identity-status::-moz-placeholder { /* Firefox 19+ */
+        color: #fff;
+        font-style: normal
+    }
+
+    .identity-status:-ms-input-placeholder { /* IE 10+ */
+        color: #fff;
+        font-style: normal
+    }
+
+    .identity-status:-moz-placeholder { /* Firefox 18- */
+        color: #fff;
+        font-style: normal
+    }
+
+/* class applies to select element itself, not a wrapper element */
+.select-css {
+    display: block;
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-family: sans-serif;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 2px solid #003B3F;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+		for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+		
+	*/
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016.17%208.26%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3EArtboard%20104%3C%2Ftitle%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M.2.23a.66.66,0,0,1,1,0L8.07,6.76,14.93.23a.93.93,0,0,1,1,0,.59.59,0,0,1,0,.93L8.58,8.1a.89.89,0,0,1-1,0L.2,1.16A.79.79,0,0,1,0,.65.81.81,0,0,1,.2.23Z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #7B9B9C 0%,#7B9B9C 100%);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+}
+
+    .select-css:required:invalid {
+        color: gray;
+    }
+
+option[value="unchosen"][disabled] {
+    display: none;
+}
+    /* Hide arrow icon in IE browsers */
+    .select-css::-ms-expand {
+        display: none;
+    }
+    /* Hover style */
+    .select-css:hover {
+        border-color: #003B3F;
+    }
+    /* Focus style */
+    .select-css:focus {
+        border-color: #003B3F;
+        /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+        outline: none !important;
+        color: #fff;
+    }
+
+    /* Set options to normal weight */
+.select-css option {
+    font-weight: normal;
+    color: #222;
+    font-size: 16px;
+}
+
+    .select-css::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #fff;
+        font-style: normal
+    }
+
+    .select-css::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #fff;
+        font-style: normal
+    }
+
+    .select-css::-moz-placeholder { /* Firefox 19+ */
+        color: #fff;
+        font-style: normal
+    }
+
+    .select-css:-ms-input-placeholder { /* IE 10+ */
+        color: #fff;
+        font-style: normal
+    }
+
+    .select-css:-moz-placeholder { /* Firefox 18- */
+        color: #fff;
+        font-style: normal
+    }
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css {
+    background-position: left .7em top 50%, 0 0;
+    padding: .6em .8em .5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled, .select-css[aria-disabled=true] {
+    color: graytext;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016.17%208.26%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3EArtboard%20104%3C%2Ftitle%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M.2.23a.66.66,0,0,1,1,0L8.07,6.76,14.93.23a.93.93,0,0,1,1,0,.59.59,0,0,1,0,.93L8.58,8.1a.89.89,0,0,1-1,0L.2,1.16A.79.79,0,0,1,0,.65.81.81,0,0,1,.2.23Z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    /*background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);*/
+}
+
+    .select-css:disabled:hover, .select-css[aria-disabled=true] {
+        border-color: #aaa;
+    }
+
+
+/*####################################################################################################*/
+
+
+.display-grid {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-grid-columns: 1050px;
+    grid-template-columns: 1050px;
+}
+
+lib-client-grid-results .display-grid {
+    -ms-grid-columns: 10% 85% 5%;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+    .sel-style:after {
+        right: 130px !important;
+    }
+
+    div {
+        outline: none !important;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.display-results-per-page {
+    -ms-grid-columns: 100% 0% 0%;
+}
+
+lib-pagination .display-grid {
+    -ms-grid-columns: 92% 4% 4%;
+}
+
+.display-grid > div {
+    text-align: center;
+}
+
+/* Required for IE to center grid */
+.ag-theme-material {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+}
+
+.loading-bar-pageload {
+    padding-top: 20%;
+}
+
+.loading-bar-modal {
+    padding-top: 50%;
+}
+
+.modal-body {
+    padding-bottom: 0px;
+}
+
+.modal-footer {
+    display: inline;
+    margin-top: 0px;
+    padding: 0px 20px 20px;
+}
+
+.modal-dialog {
+    max-width: none;
+}
+
+lib-client-details .loading-bar-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+} 
+
+.question-label {
+    font-family: "Swis721 BT";
+    font-size: 17px;
+    color: #666666;
+    line-height: 22px;
+    text-align: left;
+    padding: 10px 10px 0px 0px;
+    font-weight: normal;
+}
+
+.btn-processing {
+    border: 1px solid #0E8387;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    font-family: "Swis721 BT";
+    font-size: 18px;
+    color: #0e8387;
+    line-height: 21px;
+    text-align: center;
+    float: right;
+    margin: 2.5px 15px 2.5px 2.5px;
+    margin-top: 22px
+}
+
+    .btn-processing,
+    .btn-processing:hover,
+    .btn-processing:active,
+    .btn-processing:focus {
+        color: #0e8387;
+        outline: none !important;
+        border: 1px solid #0E8387;
+    }
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    margin-top: 22px;
+}
+
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show > .btn-primary.dropdown-toggle {
+        background-color: #0E8387;
+        border-color: #0E8387;
+    }
+
+
+.hyperlink-button {
+    font-family: "Swis721 BT";
+    font-size: 14px;
+    color: #666666;
+    line-height: 16px;
+    text-align: left;
+    padding: 10px 10px 0px 0px;
+    font-weight: 300;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+lib-client-details .edit-btn {
+    padding: 13px 20px 11px 20px;
+    /*background-color: #003B3F;*/
+    background-color: #0E8387;
+    border-color: #0E8387;
+    margin-right: 15px;
+    line-height: 21px;
+    float: right;
+}
+
+.icon-accordion-click {
+    cursor: pointer;
+}
+
+.form-control {
+    margin-bottom: 12px;
+}
+
+.validation-text {
+    color: #9F173F;
+    font-family: "Swis721 BT";
+    font-size: 14px;
+    line-height: 0px;
+    text-align: right;
+}
+
+.input-field-border,
+.input-field-border-page {
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-weight: 100;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 9px 6px 5px;
+    height: 40px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #9F173F;
+    border-radius: 2px;
+    margin-bottom: 12px;
+}
+
+    .input-field-border:focus,
+    .input-field-border-page:focus {
+        border-color: #9F173F;
+        outline: 0 #9F173F;
+        border-collapse: separate;
+        -webkit-box-shadow: 0 0 0px 1px #9F173F;
+        box-shadow: 0 0 0px 1px #9F173F;
+    }
+
+
+.input-field-border-page {
+    padding: 9px 6px 10px;
+    width: 40%;
+}
+
+    .input-field-border-page:focus {
+        width: 40%;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.results-per-page-label {
+    margin-left: 700px;
+}
+
+.results-per-page {
+    color: #333;
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-weight: 100;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #979797;
+    padding: 9px 6px 5px;
+    height: 40px;
+    width: 150px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.sel-style:after {
+    right: 32px;
+}
+
+.navbar {
+    background-color: #082340;
+    padding: 0px;
+    min-height: 30px;
+}
+
+    .navbar > .container {
+        margin-left: 0;
+    }
+
+.navbar-nav {
+    height: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+    .navbar-nav > li > a {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: transparent;
+}
+
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:focus,
+.navbar .navbar-nav > .active > a:hover {
+    background: #ffffff;
+    color: #082340;
+}
+
+.ag-theme-material .ag-ltr .ag-cell-focus {
+    border: 0;
+    outline: 0;
+}
+
+ag-grid-angular :focus,
+.ato-file-attach-application:focus,
+.tooltip-anchor:focus,
+.btn-default.focus,
+.btn-default:focus {
+    border: 0;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* Gets rid of yellow input area in autocomplete */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+    -webkit-transition: background-color 5000s ease-in-out 0s;
+    -o-transition: background-color 5000s ease-in-out 0s;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+/* End of Custom CSS*/
+
+.alert-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.alert {
+    color: #333333;
+    padding-left: 10px;
+    border-left-style: solid;
+    border-left-width: 4px;
+    display: inline-block;
+    font-weight: normal;
+    background-color: transparent;
+    font-size: 13px;
+}
+
+.alert-block {
+    padding-top: 5px;
+}
+
+.alert h2 {
+    word-wrap: break-word;
+    padding-left: 5px;
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.alert p {
+    margin-bottom: 6px;
+}
+
+    .alert p + p {
+        margin-top: 0;
+    }
+
+.alert-danger {
+    border-left-color: #da070f;
+}
+
+    .alert-danger h2 {
+        color: #da070f;
+    }
+
+.align-result {
+    height: 30px;
+}
+
+.ag-cell-value {
+    font-size: 16px;
+}
+
+.modal-body {
+    padding-top: 0px;
+}
+
+.display-new-search {
+    display: block;
+    margin-right: -60px;
+}
+
+.display-results-per-page {
+    margin-bottom: 20px;
+}
+
+.display-pagination {
+    margin-top: 15px;
+}
+
+.select-page-label {
+    color: #333333;
+    font-family: "Swis721 BT";
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-right: 4%;
+}
+
+.form-control-page {
+    width: 40%;
+    display: inline;
+    border: 1px solid #979797;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    padding: 0px 6px 2px;
+}
+
+.select-page-button {
+    background: #000;
+    color: #fff;
+    height: 40px;
+    width: 49.29px;
+    -webkit-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+    margin: 20px 0px 0px -5px;
+}
+
+    .select-page-button,
+    .select-page-button:active,
+    .select-page-button:focus {
+        outline: none !important;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+.first-button {
+    border: 1px solid #979797;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    height: 40px;
+    width: 75px;
+    margin: 5px;
+}
+
+.previous-button {
+    height: 40px;
+    width: 56.45px;
+    border: 1px solid #979797;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: 5px;
+}
+
+.normal-button {
+    height: 40px;
+    width: 46.54px;
+    border: 1px solid #979797;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: 5px;
+}
+
+.next-button {
+    height: 40px;
+    width: 56.45px;
+    border: 1px solid #979797;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: 5px;
+}
+
+.last-button {
+    border: 1px solid #979797;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    height: 40px;
+    width: 75px;
+    margin: 5px;
+}
+
+.new-search-button {
+    float: right;
+    margin-right: 30px;
+    margin-top: 22px;
+}
+
+.total-pages-label {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.active-button {
+    color: #333333;
+    font-family: "Swis721 BT";
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 21px;
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.ngb-dp-navigation-select,
+.ngb-dp-navigation-select > .custom-select {
+    height: 30px;
+    font-size: 1em;
+}
+
+.ngb-dp-month {
+    width: 220px;
+}
+
+.ngb-dp-day {
+    font-size: 16px;
+}
+
+.ngb-dp-weekdays,
+.ngb-dp-week {
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

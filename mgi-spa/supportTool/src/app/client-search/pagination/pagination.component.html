@@ -1,0 +1,35 @@
+<!-- Pagination -->
+<div *ngIf="currentPage && totalResults >1" class="display-grid">
+    <div class="container col-md-12">
+        <div class="col-md-9 display-pagination">
+            <button class="first-button" (click)="firstPage()" [disabled]="currentPage == 1">First</button>
+            <button class="previous-button icon-arrow-left" (click)="backPage()" [disabled]="currentPage == 1"></button>
+
+            <button (click)="page(pageNumber)" [disabled]="pageNumber == currentPage" [ngClass]="{'active-button': pageNumber == currentPage, 'normal-button': true}" *ngFor="let pageNumber of pageDisplay">{{pageNumber}}</button>
+
+            <label class="total-pages-label"> of {{totalPages}}</label>
+
+            <button class="next-button icon-accordion-click" (click)="nextPage()" [disabled]="currentPage == totalPages"></button>
+            <button class="last-button" (click)="lastPage()" [disabled]="currentPage == totalPages">Last</button>
+        </div>
+
+        <div class="col-md-3">
+            <form [formGroup]="goToPageForm">
+                <label class="select-page-label">Go to page</label>
+            
+                <input #goToPageNumber 
+                    [ngClass]= "checkGoToPageError() ? 'input-field-border-page': 'form-control form-control-page'"
+                    formControlName="goToPage">
+            
+                <button class="select-page-button icon-accordion-click" (click)="goToPage(goToPageNumber.value)"></button>
+
+                <div *ngIf="checkGoToPageError()" class="validation-text">
+                    <ng-template [ngIf]="goToPageForm.controls['goToPage'].hasError('validPage')" >
+                        This field is invalid
+                    </ng-template>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

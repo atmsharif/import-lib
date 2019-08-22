@@ -1,0 +1,7 @@
+<div *ngIf="loginError">
+  <lib-error-message [systemError]="loginError"></lib-error-message>
+</div>
+
+<div *ngIf="!loginError" class="loading-bar-pageload">
+  <lib-loading-bar ></lib-loading-bar>
+</div>
